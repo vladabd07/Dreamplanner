@@ -91,6 +91,7 @@ blockquote {
 }
 
 .logo {
+  font-size: 30px;
   font-family: "Lora";
   font-weight: 500;
   color: #ff427f;
@@ -187,7 +188,7 @@ blockquote {
   text-transform: uppercase;
 }
 
-.about-us-title {
+.about-us__title {
   margin: 0 0 20px 0;
 
   text-align: left;
@@ -298,12 +299,6 @@ blockquote {
 
 /******** PORTFOLIO *********/
 
-.portfolio {
-}
-
-.services__title {
-}
-
 .portfolio__title-wrapper {
   position: relative;
 }
@@ -325,9 +320,6 @@ blockquote {
 .video {
   height: 500px;
   position: relative;
-}
-
-.portfolio__video {
 }
 
 .video__media {
@@ -356,7 +348,7 @@ blockquote {
   border: none;
 }
 
-.portoflio__row {
+.portfolio__row {
   height: 250px;
   display: flex;
   gap: 20px;
@@ -553,6 +545,7 @@ blockquote {
 }
 
 .footer__list-inner a {
+  font-size: 20px;
   font-family: "Lato", sans-serif;
   font-weight: 500;
   color: #cfcfcf;
