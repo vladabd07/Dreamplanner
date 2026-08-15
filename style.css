@@ -4,11 +4,20 @@
   box-sizing: border-box;
 }
 
+*::selection {
+  background-color: #ffabc6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Lato", sans-serif;
   margin: 0;
   font-size: 16px;
 }
+
 h1,
 h2,
 h3,
@@ -61,6 +70,57 @@ blockquote {
   color: white;
   background-color: #ff427f;
   border: none;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #FF6899;
+}
+
+.btn:active {
+  background-color: #FF0254;
+}
+
+
+.btn--light {
+  background-color: #fff;
+  color: #ff427f;
+}
+
+.btn--light:hover {
+  background-color: #eeeded;
+}
+
+.btn--light:active {
+  background-color: #dddcdd;
+}
+
+
+.link {
+  width: 240px;
+  height: 60px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid #ff427f;
+  border-radius: 5px;
+
+  text-transform: uppercase;
+  transition: color 0.2s, background-color 0.2s;
+  color: #ff427f;
+}
+
+.link:hover {
+  color: #FF6899;
+  border-color: #FF6899
+}
+
+.link:active {
+  color: #FF0254;
+  border-color: #FF0254;
 }
 
 .title {
@@ -78,10 +138,42 @@ blockquote {
 
 .flower {
   margin: 10px 0 0 0;
+  position: relative;
+  display: inline-block;
 }
 
-.no-margin {
-  margin: 0;
+.flower::after,
+.flower::before {
+  content: "";
+  background-color: #FF427F;
+  width: 150px;
+  height: 2px;
+  position: absolute;
+
+  top: 50%;
+
+  transform: translateY(-100%);
+}
+
+.flower::after {
+  left: calc(100% + 7px);
+}
+
+.flower::before {
+  right: calc(100% + 7px);
+}
+
+.socials__link svg {
+  fill: #EC5598;
+  transition: 0.3s;
+}
+
+.socials__link svg:hover {
+  fill: #fc8eb1;
+}
+
+.socials__link svg:active {
+  fill: #FF0254;
 }
 
 /* HEADER */
@@ -110,9 +202,21 @@ blockquote {
 }
 
 .header__list a {
+  display: inline-block;
   font-size: 16px;
   text-transform: uppercase;
   color: black;
+  transition: 0.3s;
+}
+
+.header__list a:hover {
+  color: #5f5e5e;
+  transform: scale(1.05);
+}
+
+.header__list a:active {
+  color: #FF0254;
+  transform: scale(0.9);
 }
 
 /* WELCOME */
@@ -145,6 +249,10 @@ blockquote {
   color: #ffabc6;
 }
 
+.welcome__title span::selection {
+  background-color: #fff;
+  color: #ffabc6;
+}
 /* ABOUT-US */
 
 .about-us {
@@ -176,6 +284,17 @@ blockquote {
 
 .about-us__desc {
   position: relative;
+
+}
+
+.about-us__desc::before {
+  content: "";
+  position: absolute;
+  width: 180px;
+  height: 140px;
+  background: url("./img/ring-1.png") no-repeat center / contain;
+  bottom: 0;
+  right: 0;
 }
 
 .about-us__subtitle {
@@ -206,7 +325,7 @@ blockquote {
   line-height: 1.6;
 }
 
-.about-us__text p + p {
+.about-us__text p+p {
   margin: 10px 0 0 0;
 }
 
@@ -237,6 +356,12 @@ blockquote {
   padding: 0 30px 40px 0;
 
   position: relative;
+
+  transition: transform 1s;
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
 
 .card img {
@@ -276,28 +401,36 @@ blockquote {
 }
 
 .card__more-link {
+  position: relative;
   font-size: 14px;
   color: #ff427f;
+  padding-left: 40px;
 }
 
-.link {
-  width: 240px;
-  height: 60px;
-  margin: 0 auto;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  border: 1px solid #ff427f;
-  border-radius: 5px;
-
-  text-transform: uppercase;
-
-  color: #ff427f;
+.card__more-link::before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 1px;
+  background-color: #ff427f;
+  left: 0;
+  top: 50%;
 }
+
 
 /******** PORTFOLIO *********/
+
+.portfolio__container {
+  position: relative;
+}
+
+.portfolio__container::before {
+  content: "";
+  position: absolute;
+  width: 145px;
+  height: 130px;
+  background: url("./img/ring-2.png") no-repeat center / contain;
+}
 
 .portfolio__title-wrapper {
   position: relative;
@@ -340,6 +473,16 @@ blockquote {
   font-weight: 500;
   font-size: 24px;
   color: #fff;
+  transition: 0.3s;
+}
+
+.video__play:hover {
+  transform: scale(1.03);
+}
+
+.video__play:active {
+  transform: scale(1);
+  opacity: 0.9;
 }
 
 .video__play-btn {
@@ -348,24 +491,31 @@ blockquote {
   border: none;
 }
 
+
 .portfolio__row {
   height: 250px;
   display: flex;
   gap: 20px;
 }
 
+.portfolio__row:nth-child(odd) {
+  flex-direction: row-reverse;
+
+}
+
 .portfolio__img {
-  width: 30%;
+  width: calc(30% - 10px);
   object-fit: cover;
 }
 
-.portfolio__img--big {
-  width: 70%;
+.portfolio__img:nth-child(1) {
+  width: calc(70% - 10px)
 }
 
 .portfolio__img--pos-top {
   object-position: 0 -50px;
 }
+
 
 /****** TESTIMONIAL ******/
 
@@ -377,9 +527,22 @@ blockquote {
 .testimonial span {
   color: #ec5598;
 }
+
 .testimonial__img-wrapper {
   position: relative;
   padding: 55px 0 0 55px;
+}
+
+.testimonial__img-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+
+  width: 400px;
+  height: 510px;
+  background-color: #ec5598;
 }
 
 .testimonial__img {
@@ -389,16 +552,6 @@ blockquote {
   object-position: -100px;
 }
 
-.testimonial__img-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -5;
-
-  width: 400px;
-  height: 510px;
-  background-color: #ec5598;
-}
 
 .testimonial-text {
   width: 50%;
@@ -469,10 +622,7 @@ blockquote {
   line-height: 1.6;
 }
 
-.btn--light {
-  background-color: #fff;
-  color: #ff427f;
-}
+
 
 /****** FOOTER *******/
 
@@ -482,13 +632,14 @@ blockquote {
   background-color: #454545;
   color: #e8e8e8;
 }
+
 .footer__container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.footer__desc > * + * {
+.footer__desc>*+* {
   margin: 15px 0 0 0;
 }
 
@@ -525,6 +676,15 @@ blockquote {
 
 .copy a {
   color: #ec5598;
+  transition: 0.3s;
+}
+
+.copy a:hover {
+  color: #fc8eb1;
+}
+
+.copy a:active {
+  color: #FF0254;
 }
 
 .footer__list {
@@ -541,14 +701,26 @@ blockquote {
 }
 
 .footer__list-inner {
-  margin: 20px 0 0 0;
+  margin-top: 20px;
 }
 
 .footer__list-inner a {
-  font-size: 20px;
+  display: inline-block;
   font-family: "Lato", sans-serif;
+  font-size: 20px;
   font-weight: 500;
   color: #cfcfcf;
+  transition: 0.3s;
+}
+
+.footer__list-inner a:hover {
+  transform: scale(1.02);
+  opacity: 0.7;
+}
+
+.footer__list-inner a:active {
+  color: #FF0254;
+  transform: scale(0.9);
 }
 
 .footer__list-inner li {
@@ -556,6 +728,6 @@ blockquote {
   font-weight: 500;
 }
 
-.footer__list-inner li + li {
-  margin: 15px 0 0 0;
+.footer__list-inner li+li {
+  margin-top: 15px;
 }
